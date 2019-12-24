@@ -5,11 +5,12 @@ import styled from 'styled-components';
 import MainMenu from './menu';
 
 const HeaderWrapper = styled.header`
-  background: linear-gradient(
-    90deg,
-    rgba(51, 12, 131, 1) 29%,
-    rgba(55, 180, 146, 1) 100%
+  background: radial-gradient(
+    circle,
+    rgba(63, 94, 251, 1) 0%,
+    rgba(252, 70, 107, 1) 100%
   );
+  box-shadow: 0px 10px 30px -5px rgba(0, 0, 0, 0.3);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
