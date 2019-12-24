@@ -16,8 +16,7 @@ const usePosts = () => {
   `);
   return data.wpgraphql.posts.nodes.map(post => ({
     title: post.title,
-    slug: 'blog/' + post.slug,
-    custonExcerpt: post.shortLongPost.customExcerpt
+    slug: 'blog/' + post.slug
   }));
   // return data.wpgraphql.posts.nodes
 };
