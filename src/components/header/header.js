@@ -5,12 +5,7 @@ import styled from 'styled-components';
 import MainMenu from './menu';
 
 const HeaderWrapper = styled.header`
-  background: radial-gradient(
-    circle,
-    rgba(63, 94, 251, 1) 0%,
-    rgba(252, 70, 107, 1) 100%
-  );
-  box-shadow: 0px 10px 30px -5px rgba(0, 0, 0, 0.3);
+  /* box-shadow: 0px 10px 30px -5px rgba(0, 0, 0, 0.3); */
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -34,7 +29,7 @@ const HeaderWrapper = styled.header`
     h1 {
       font-size: 22px;
       margin: 0;
-      color: #fff;
+      color: #000;
       @media (min-width: 768px) {
         font-size: 30px;
       }

@@ -51,7 +51,7 @@ const Menu = styled.ul`
     display: flex;
     align-items: center;
     a {
-      color: #fff;
+      color: #000;
       font-style: italic;
       display: block;
       padding: 16px 20px;

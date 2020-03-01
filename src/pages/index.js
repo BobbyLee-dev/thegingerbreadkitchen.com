@@ -26,7 +26,7 @@ const Home = ({ data }) => {
   return (
     <Layout>
       <SEO title="Home" />
-      <HomeWelcome content={sections.welcome} />
+      {/* <HomeWelcome content={sections.welcome} /> */}
       <section className="content">
         <h2>Recent Posts</h2>
         <RecentPost />

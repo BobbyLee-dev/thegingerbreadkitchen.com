@@ -1,1 +1,1 @@
-{"data":{"wpgraphql":{"posts":{"nodes":[{"uri":"test2","title":"Test2","featuredImage":null},{"uri":"test-1","title":"Test 1","featuredImage":null},{"uri":"hello-world","title":"Hello world!","featuredImage":null}]}}}}
+{"data":{"wpgraphql":{"posts":{"nodes":[{"uri":"hello-world","title":"Hello world!","featuredImage":null}]}}}}
