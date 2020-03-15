@@ -8,6 +8,7 @@ const PostsWrap = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   .single-post {
+    background-color: white;
     width: 300px;
     padding: 20px;
     margin: 10px;
@@ -48,7 +49,8 @@ export default () => (
       }
     `}
     render={data => {
-      const firstThreePosts = data.wpgraphql.posts.nodes.slice(0, 3);
+      // const firstThreePosts = data.wpgraphql.posts.nodes.slice(0, 3);
+      const firstThreePosts = data.wpgraphql.posts.nodes;
 
       return (
         <PostsWrap>
@@ -70,7 +72,7 @@ export default () => (
                     __html: post.shortLongPost.customExcerpt
                   }}
                 /> */}
-                <pre>{JSON.stringify(post, null, 2)}</pre>
+                {/* <pre>{JSON.stringify(post, null, 2)}</pre> */}
                 <Link to={`/blog/${post.uri}`}>Read More</Link>
               </div>
             );

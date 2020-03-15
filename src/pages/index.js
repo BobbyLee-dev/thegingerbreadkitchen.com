@@ -2,10 +2,9 @@ import React from 'react';
 import { graphql } from 'gatsby';
 
 import Layout from '../components/layout/layout';
-import Image from '../components/image';
 import SEO from '../components/seo';
 import RecentPost from '../components/page-home/recent-post';
-import HomeWelcome from '../components/page-home/welcome';
+// import HomeWelcome from '../components/page-home/welcome';
 
 export const pageQuery = graphql`
   {
@@ -21,23 +20,21 @@ export const pageQuery = graphql`
 `;
 
 const Home = ({ data }) => {
-  const sections = data.wpgraphql.pageBy.homePage;
+  // const sections = data.wpgraphql.pageBy.homePage;
 
   return (
     <Layout>
       <SEO title="Home" />
       {/* <HomeWelcome content={sections.welcome} /> */}
       <section className="content">
-        <h2>Recent Posts</h2>
+        {/* <h2>Recent Posts</h2> */}
         <RecentPost />
       </section>
 
       <section
-        className="content"
+        // className="content"
         style={{ maxWidth: `300px`, marginBottom: `1.45rem`, margin: 'auto' }}
-      >
-        <Image />
-      </section>
+      ></section>
     </Layout>
   );
 };

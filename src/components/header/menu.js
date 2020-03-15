@@ -3,9 +3,32 @@ import React, { useState } from 'react';
 import { useSpring, animated } from 'react-spring';
 import styled from 'styled-components';
 import SubMenuButton from './sub-menu-button';
+import {
+  FaInstagram,
+  FaPinterest,
+  FaTwitter,
+  FaFacebookF
+} from 'react-icons/fa';
 
 const mobileNavBreakPoint = `890px`;
 const mobileNavMaxBreakPoint = `889px`;
+
+const NavWrap = styled.div`
+  padding: 10px 20px;
+  background-color: white;
+  position: fixed;
+  left: 0;
+  right: 0;
+  width: 100%;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  @media (min-width: ${mobileNavBreakPoint}) {
+    padding: 10px 40px;
+  }
+`;
 
 const MainNav = styled(animated.nav)`
   padding-left: 40px;
@@ -25,16 +48,27 @@ const MainNav = styled(animated.nav)`
     padding-left: 150px;
   }
   @media (min-width: ${mobileNavBreakPoint}) {
-    display: block !important;
-    opacity: 1 !important;
+    background-color: white;
     padding-left: 0;
+    /* padding: 0 40px; */
+    /* position: fixed; */
+    /* left: 0;
+    right: 0;
+    width: 100%;
+    top: 0;
+    z-index: 100; */
+    display: flex !important;
+    justify-content: space-between;
+    align-items: center;
+    opacity: 1 !important;
   }
   &.open {
-    background: linear-gradient(
+    background: white;
+    /* background: linear-gradient(
       90deg,
       rgba(51, 12, 131, 1) 29%,
       rgba(55, 180, 146, 1) 100%
-    );
+    ); */
   }
 `;
 
@@ -43,7 +77,6 @@ const Menu = styled.ul`
   margin: 0;
   @media (min-width: ${mobileNavBreakPoint}) {
     display: flex;
-
     justify-content: flex-end;
   }
   li {
@@ -105,6 +138,15 @@ const Menu = styled.ul`
   }
 `;
 
+const SocialNav = styled.div`
+  position: relative;
+  z-index: 100;
+  display: flex;
+  svg {
+    margin: 0 5px;
+  }
+`;
+
 const StyledBurger = styled.button`
   top: 5%;
   left: 2rem;
@@ -129,7 +171,7 @@ const StyledBurger = styled.button`
   div {
     width: 2rem;
     height: 0.25rem;
-    background: #fff;
+    background: black;
     border-radius: 10px;
     position: relative;
     transform-origin: 1px;
@@ -193,77 +235,85 @@ const MainMenu = ({ style }) => {
 
   return (
     <>
-      <StyledBurger
-        isBurgerOpen={isBurgerOpen}
-        setBurgerOpen={setBurgerOpen}
-        onClick={() => {
-          setBurgerOpen(!isBurgerOpen);
-          setNavOpen(!isNavOpen);
-        }}
-      >
-        <animated.div style={topBun} />
-        <animated.div style={meat} />
-        <animated.div style={bottomBun} />
-      </StyledBurger>
-      <MainNav className={isNavOpen ? 'open' : ''} style={navAnimation}>
-        <Menu>
-          {navItemObjects.map(item => {
-            return (
-              <React.Fragment key={item.id}>
-                <li
-                  className={
-                    item.childItems.nodes.length > 0 ? 'has-sub-menu' : ''
-                  }
-                >
-                  <Link
-                    onClick={() => {
-                      setBurgerOpen(!isBurgerOpen);
-                      setNavOpen(!isNavOpen);
-                    }}
-                    to={(() => {
-                      if (item.url.includes('sapphireapi.com')) {
-                        return item.url.replace(
-                          'https://sapphireapi.com/therunningcoder',
-                          ''
-                        );
-                      } else {
-                        return item.url; // make into no link somehow
-                      }
-                    })()}
+      <NavWrap>
+        <StyledBurger
+          isBurgerOpen={isBurgerOpen}
+          setBurgerOpen={setBurgerOpen}
+          onClick={() => {
+            setBurgerOpen(!isBurgerOpen);
+            setNavOpen(!isNavOpen);
+          }}
+        >
+          <animated.div style={topBun} />
+          <animated.div style={meat} />
+          <animated.div style={bottomBun} />
+        </StyledBurger>
+        <MainNav className={isNavOpen ? 'open' : ''} style={navAnimation}>
+          <Menu>
+            {navItemObjects.map(item => {
+              return (
+                <React.Fragment key={item.id}>
+                  <li
+                    className={
+                      item.childItems.nodes.length > 0 ? 'has-sub-menu' : ''
+                    }
                   >
-                    {item.label}
-                  </Link>
-                  {item.childItems.nodes.length > 0 && (
-                    <SubMenuButton
-                      setSubMenuToggle={setSubMenuToggle}
-                      isSubMenuToggled={isSubMenuToggled}
-                    />
-                  )}
+                    <Link
+                      onClick={() => {
+                        setBurgerOpen(!isBurgerOpen);
+                        setNavOpen(!isNavOpen);
+                      }}
+                      to={(() => {
+                        if (item.url.includes('sapphireapi.com')) {
+                          return item.url.replace(
+                            'https://sapphireapi.com/therunningcoder',
+                            ''
+                          );
+                        } else {
+                          return item.url; // make into no link somehow
+                        }
+                      })()}
+                    >
+                      {item.label}
+                    </Link>
+                    {item.childItems.nodes.length > 0 && (
+                      <SubMenuButton
+                        setSubMenuToggle={setSubMenuToggle}
+                        isSubMenuToggled={isSubMenuToggled}
+                      />
+                    )}
 
-                  {item.childItems.nodes.length > 0 && (
-                    <animated.ul style={Object.assign(revealSubMenu)}>
-                      {item.childItems.nodes.map(childItem => {
-                        return (
-                          <li key={childItem.id}>
-                            <Link
-                              to={childItem.url.replace(
-                                'https://sapphireapi.com/therunningcoder',
-                                ''
-                              )}
-                            >
-                              {childItem.label}
-                            </Link>
-                          </li>
-                        );
-                      })}
-                    </animated.ul>
-                  )}
-                </li>
-              </React.Fragment>
-            );
-          })}
-        </Menu>
-      </MainNav>
+                    {item.childItems.nodes.length > 0 && (
+                      <animated.ul style={Object.assign(revealSubMenu)}>
+                        {item.childItems.nodes.map(childItem => {
+                          return (
+                            <li key={childItem.id}>
+                              <Link
+                                to={childItem.url.replace(
+                                  'https://sapphireapi.com/therunningcoder',
+                                  ''
+                                )}
+                              >
+                                {childItem.label}
+                              </Link>
+                            </li>
+                          );
+                        })}
+                      </animated.ul>
+                    )}
+                  </li>
+                </React.Fragment>
+              );
+            })}
+          </Menu>
+        </MainNav>
+        <SocialNav>
+          <FaInstagram />
+          <FaPinterest />
+          <FaTwitter />
+          <FaFacebookF />
+        </SocialNav>
+      </NavWrap>
     </>
   );
 };

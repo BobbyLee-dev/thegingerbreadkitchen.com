@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `Sonia Lee`,
+    title: `Gingerbread Stories`,
     description: `Sonia Lee's blog - Art, painting, cooking, surfing, corgies.`,
     author: `@runningCoder81`
   },
@@ -18,7 +18,7 @@ module.exports = {
       resolve: 'gatsby-plugin-web-font-loader',
       options: {
         google: {
-          families: ['Monoton:400', 'Press Start 2P']
+          families: ['Bellota+Text:400,400i', 'Press Start 2P']
         }
       }
     },
