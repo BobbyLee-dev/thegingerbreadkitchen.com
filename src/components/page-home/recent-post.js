@@ -9,16 +9,27 @@ const PostsWrap = styled.div`
   justify-content: center;
   .single-post {
     background-color: white;
-    width: 300px;
+    width: 100%;
+    max-width: 800px;
     padding: 20px;
     margin: 10px;
     border-radius: 15px;
-    box-shadow: 0px 10px 30px -5px rgba(0, 0, 0, 0.3);
+    /* box-shadow: 0px 10px 30px -5px rgba(0, 0, 0, 0.3); */
     @media (min-width: 768px) {
       margin: 20px;
     }
     .post-img {
       margin-bottom: 15px;
+    }
+  }
+  .categories {
+    display: flex;
+    justify-content: center;
+    text-transform: uppercase;
+    color: #dea08c;
+    font-size: 14px;
+    > div {
+      margin: 10px;
     }
   }
 `;
@@ -32,6 +43,12 @@ export default () => (
             nodes {
               uri
               title
+              excerpt
+              categories {
+                nodes {
+                  name
+                }
+              }
               featuredImage {
                 sourceUrl
                 altText
@@ -55,8 +72,18 @@ export default () => (
       return (
         <PostsWrap>
           {firstThreePosts.map((post, index) => {
+            console.log(post);
+
             return (
               <div className="single-post" key={post.uri}>
+                {post.categories.nodes.length > 0 && (
+                  <div className="categories">
+                    {post.categories.nodes.map(category => {
+                      return <div>{category.name}</div>;
+                    })}
+                  </div>
+                )}
+                <h3>{post.title}</h3>
                 {post.featuredImage && (
                   <div className="post-img">
                     <Img
@@ -65,13 +92,13 @@ export default () => (
                     />
                   </div>
                 )}
-                <h3>{post.title}</h3>
 
-                {/* <div
+                <div
+                  className="excerpt"
                   dangerouslySetInnerHTML={{
-                    __html: post.shortLongPost.customExcerpt
+                    __html: post.excerpt
                   }}
-                /> */}
+                />
                 {/* <pre>{JSON.stringify(post, null, 2)}</pre> */}
                 <Link to={`/blog/${post.uri}`}>Read More</Link>
               </div>

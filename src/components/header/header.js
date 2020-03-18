@@ -6,6 +6,7 @@ import MainMenu from './menu';
 import SiteLogo from '../../components/site-logo';
 
 const HeaderWrapper = styled.header`
+  font-family: 'Overpass', sans-serif;
   background-color: white;
   /* box-shadow: 0px 10px 30px -5px rgba(0, 0, 0, 0.3); */
   display: flex;
@@ -43,15 +44,16 @@ const HeaderWrapper = styled.header`
       }
     }
     h1 {
-      font-family: 'Bellota Text', cursive;
+      text-transform: uppercase;
+      font-weight: 400;
       font-size: 22px;
       margin: 0;
       color: #000;
       @media (min-width: 768px) {
-        font-size: 30px;
+        font-size: 60px;
       }
       @media (min-width: 1400px) {
-        font-size: 40px;
+        font-size: 80px;
       }
     }
   }

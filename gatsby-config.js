@@ -18,7 +18,10 @@ module.exports = {
       resolve: 'gatsby-plugin-web-font-loader',
       options: {
         google: {
-          families: ['Bellota+Text:400,400i', 'Press Start 2P']
+          families: [
+            'Overpass:400,400i,700,700i',
+            'Amiri|PT+Serif:400,400i,700'
+          ]
         }
       }
     },

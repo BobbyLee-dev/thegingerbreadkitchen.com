@@ -9,13 +9,17 @@ import {
   FaTwitter,
   FaFacebookF
 } from 'react-icons/fa';
+import { GiKnifeFork } from 'react-icons/gi';
 
 const mobileNavBreakPoint = `890px`;
 const mobileNavMaxBreakPoint = `889px`;
 
 const NavWrap = styled.div`
+  @media (max-width: ${mobileNavMaxBreakPoint}) {
+    height: 40px;
+  }
   padding: 10px 20px;
-  background-color: white;
+  background-color: #fbf5ed;
   position: fixed;
   left: 0;
   right: 0;
@@ -28,11 +32,26 @@ const NavWrap = styled.div`
   @media (min-width: ${mobileNavBreakPoint}) {
     padding: 10px 40px;
   }
+  > * {
+    flex-basis: 0;
+    flex-grow: 1;
+  }
+  .fork {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 14px;
+    font-style: italic;
+    svg {
+      margin-left: 5px;
+    }
+  }
 `;
 
 const MainNav = styled(animated.nav)`
   padding-left: 40px;
   @media (max-width: ${mobileNavMaxBreakPoint}) {
+    background-color: #fbf5ed;
     position: fixed;
     width: 100%;
     height: 100%;
@@ -48,7 +67,7 @@ const MainNav = styled(animated.nav)`
     padding-left: 150px;
   }
   @media (min-width: ${mobileNavBreakPoint}) {
-    background-color: white;
+    /* background-color: white; */
     padding-left: 0;
     /* padding: 0 40px; */
     /* position: fixed; */
@@ -58,12 +77,12 @@ const MainNav = styled(animated.nav)`
     top: 0;
     z-index: 100; */
     display: flex !important;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: center;
+    align-items: flex-end;
     opacity: 1 !important;
   }
   &.open {
-    background: white;
+    background-color: #fbf5ed;
     /* background: linear-gradient(
       90deg,
       rgba(51, 12, 131, 1) 29%,
@@ -85,7 +104,7 @@ const Menu = styled.ul`
     align-items: center;
     a {
       color: #000;
-      font-style: italic;
+      text-transform: uppercase;
       display: block;
       padding: 16px 20px;
       text-decoration: none;
@@ -93,11 +112,11 @@ const Menu = styled.ul`
       line-height: 100%;
       transition: opacity 0.2s;
       @media (min-width: 600px) {
-        font-size: 30px;
+        /* font-size: 30px; */
       }
       @media (min-width: ${mobileNavBreakPoint}) {
         padding: 10px 20px;
-        font-size: 18px;
+        font-size: 14px;
       }
       /* &:hover {
         opacity: 0.7;
@@ -144,6 +163,10 @@ const SocialNav = styled.div`
   display: flex;
   svg {
     margin: 0 5px;
+    font-size: 16px;
+    @media (min-width: ${mobileNavBreakPoint}) {
+      font-size: 18px;
+    }
   }
 `;
 
@@ -153,8 +176,9 @@ const StyledBurger = styled.button`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  width: 2rem;
-  height: 2rem;
+  align-items: center;
+  /* width: 2rem; */
+  height: 16px;
   background: transparent;
   border: none;
   cursor: pointer;
@@ -169,12 +193,12 @@ const StyledBurger = styled.button`
   }
 
   div {
-    width: 2rem;
-    height: 0.25rem;
+    width: 19px;
+    height: 2px;
     background: black;
     border-radius: 10px;
     position: relative;
-    transform-origin: 1px;
+    transform-origin: 2px;
   }
 `;
 
@@ -236,6 +260,12 @@ const MainMenu = ({ style }) => {
   return (
     <>
       <NavWrap>
+        <SocialNav>
+          <FaInstagram />
+          <FaPinterest />
+          <FaTwitter />
+          <FaFacebookF />
+        </SocialNav>
         <StyledBurger
           isBurgerOpen={isBurgerOpen}
           setBurgerOpen={setBurgerOpen}
@@ -307,12 +337,10 @@ const MainMenu = ({ style }) => {
             })}
           </Menu>
         </MainNav>
-        <SocialNav>
-          <FaInstagram />
-          <FaPinterest />
-          <FaTwitter />
-          <FaFacebookF />
-        </SocialNav>
+        <div className="fork search">
+          Search...
+          <GiKnifeFork />
+        </div>
       </NavWrap>
     </>
   );
