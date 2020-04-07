@@ -4,6 +4,7 @@ import React from 'react';
 import styled from 'styled-components';
 import MainMenu from './menu';
 import SiteLogo from '../../components/site-logo';
+import GingerbreadLogo from '../../images/gingerbread_logo';
 
 const HeaderWrapper = styled.header`
   font-family: 'Overpass', sans-serif;
@@ -64,13 +65,11 @@ const Header = ({ siteTitle }) => {
     <>
       <HeaderWrapper>
         <MainMenu />
-        <Link className="site-title" to="/">
+        {/* <Link className="site-title" to="/">
           <div className="site-logo">
-            <SiteLogo />
+            <GingerbreadLogo />
           </div>
-
-          <h1>{siteTitle}</h1>
-        </Link>
+        </Link> */}
       </HeaderWrapper>
     </>
   );

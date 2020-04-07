@@ -9,7 +9,6 @@ import {
   FaTwitter,
   FaFacebookF
 } from 'react-icons/fa';
-import { GiKnifeFork } from 'react-icons/gi';
 
 const mobileNavBreakPoint = `890px`;
 const mobileNavMaxBreakPoint = `889px`;
@@ -31,20 +30,6 @@ const NavWrap = styled.div`
   justify-content: space-between;
   @media (min-width: ${mobileNavBreakPoint}) {
     padding: 10px 40px;
-  }
-  > * {
-    flex-basis: 0;
-    flex-grow: 1;
-  }
-  .fork {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    font-size: 14px;
-    font-style: italic;
-    svg {
-      margin-left: 5px;
-    }
   }
 `;
 
@@ -337,10 +322,6 @@ const MainMenu = ({ style }) => {
             })}
           </Menu>
         </MainNav>
-        <div className="fork search">
-          Search...
-          <GiKnifeFork />
-        </div>
       </NavWrap>
     </>
   );

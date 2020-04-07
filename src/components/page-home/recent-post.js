@@ -6,17 +6,22 @@ import Img from 'gatsby-image';
 const PostsWrap = styled.div`
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-between;
   .single-post {
     background-color: white;
     width: 100%;
-    max-width: 800px;
-    padding: 20px;
-    margin: 10px;
+    /* max-width: 800px; */
     border-radius: 15px;
     /* box-shadow: 0px 10px 30px -5px rgba(0, 0, 0, 0.3); */
     @media (min-width: 768px) {
-      margin: 20px;
+      width: 47%;
+    }
+    &:first-of-type {
+      width: 100%;
+      @media (min-width: 768px) {
+        max-width: 1000px;
+        margin: auto;
+      }
     }
     .post-img {
       margin-bottom: 15px;
@@ -25,12 +30,47 @@ const PostsWrap = styled.div`
   .categories {
     display: flex;
     justify-content: center;
-    text-transform: uppercase;
-    color: #dea08c;
-    font-size: 14px;
-    > div {
+
+    .single-category {
+      text-transform: uppercase;
+      color: #dea08c;
+      font-size: 14px;
       margin: 10px;
+      font-family: 'Overpass', sans-serif;
+      text-decoration: none;
+      &:hover {
+        color: #000;
+      }
     }
+  }
+  .post-title {
+    font-family: 'Amiri', serif;
+    font-size: 24px;
+    margin-bottom: 20px;
+    line-height: 1.25em;
+    @media (min-width: 768px) {
+      font-size: 40px;
+    }
+  }
+  .post-date {
+    font-family: 'Overpass', sans-serif;
+    text-transform: uppercase;
+    color: #414141;
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+  .excerpt {
+    font-family: 'Amiri', serif;
+    font-size: 17px;
+    color: #222222;
+  }
+  .continue-reading {
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #000;
   }
 `;
 
@@ -44,6 +84,7 @@ export default () => (
               uri
               title
               excerpt
+              date
               categories {
                 nodes {
                   name
@@ -66,24 +107,31 @@ export default () => (
       }
     `}
     render={data => {
-      // const firstThreePosts = data.wpgraphql.posts.nodes.slice(0, 3);
-      const firstThreePosts = data.wpgraphql.posts.nodes;
+      // const allPosts = data.wpgraphql.posts.nodes.slice(0, 3);
+      const allPosts = data.wpgraphql.posts.nodes;
 
       return (
         <PostsWrap>
-          {firstThreePosts.map((post, index) => {
-            console.log(post);
+          {allPosts.map((post, index) => {
+            console.log(new Date(post.date).toUTCString().slice(0, 16));
 
             return (
               <div className="single-post" key={post.uri}>
                 {post.categories.nodes.length > 0 && (
                   <div className="categories">
                     {post.categories.nodes.map(category => {
-                      return <div>{category.name}</div>;
+                      return (
+                        <a href="#" className="single-category">
+                          {category.name}
+                        </a>
+                      );
                     })}
                   </div>
                 )}
-                <h3>{post.title}</h3>
+                <h2 className="post-title">{post.title}</h2>
+                <div className="post-date">
+                  {new Date(post.date).toUTCString().slice(0, 16)}
+                </div>
                 {post.featuredImage && (
                   <div className="post-img">
                     <Img
@@ -92,7 +140,6 @@ export default () => (
                     />
                   </div>
                 )}
-
                 <div
                   className="excerpt"
                   dangerouslySetInnerHTML={{
@@ -100,7 +147,9 @@ export default () => (
                   }}
                 />
                 {/* <pre>{JSON.stringify(post, null, 2)}</pre> */}
-                <Link to={`/blog/${post.uri}`}>Read More</Link>
+                <Link className="continue-reading" to={`/blog/${post.uri}`}>
+                  Continue Reading
+                </Link>
               </div>
             );
           })}
