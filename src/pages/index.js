@@ -3,8 +3,12 @@ import { graphql } from 'gatsby';
 
 import Layout from '../components/layout/layout';
 import SEO from '../components/seo';
-import RecentPost from '../components/page-home/recent-post';
-// import HomeWelcome from '../components/page-home/welcome';
+import Posts from '../components/page-home/posts';
+import styled from 'styled-components';
+
+const ContentWrap = styled.section`
+  padding-top: 0 !important;
+`;
 
 export const pageQuery = graphql`
   {
@@ -25,16 +29,9 @@ const Home = ({ data }) => {
   return (
     <Layout>
       <SEO title="Home" />
-      {/* <HomeWelcome content={sections.welcome} /> */}
-      <section className="content">
-        {/* <h2>Recent Posts</h2> */}
-        <RecentPost />
-      </section>
-
-      <section
-        // className="content"
-        style={{ maxWidth: `300px`, marginBottom: `1.45rem`, margin: 'auto' }}
-      ></section>
+      <ContentWrap className="content">
+        <Posts />
+      </ContentWrap>
     </Layout>
   );
 };

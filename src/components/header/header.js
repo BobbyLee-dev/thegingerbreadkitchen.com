@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
 import MainMenu from './menu';
-import SiteLogo from '../../components/site-logo';
-import GingerbreadLogo from '../../images/gingerbread_logo';
+import SiteLogo from '../../images/site-logo';
 
 const HeaderWrapper = styled.header`
   font-family: 'Overpass', sans-serif;
@@ -15,12 +14,6 @@ const HeaderWrapper = styled.header`
   justify-content: space-between;
   padding: 10px 20px;
   align-items: center;
-  /* position: fixed; */
-  /* left: 0;
-  right: 0;
-  width: 100%;
-  top: 0;
-  z-index: 100; */
   @media (min-width: 1400px) {
     padding: 10px 40px;
   }
@@ -28,20 +21,22 @@ const HeaderWrapper = styled.header`
     padding: 10px 80px;
   }
   .site-title {
-    z-index: 10;
     text-decoration: none;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    @media (min-width: 890px) {
+      margin-top: 100px;
+      margin-bottom: 100px;
+    }
     .site-logo {
-      width: 200px;
-      height: 130px;
-      max-width: 300px;
-      margin-bottom: 20px;
-      img {
-        max-width: 100%;
+      svg {
+        width: 1000px;
         height: auto;
+        max-width: 100%;
       }
     }
     h1 {
@@ -65,11 +60,11 @@ const Header = ({ siteTitle }) => {
     <>
       <HeaderWrapper>
         <MainMenu />
-        {/* <Link className="site-title" to="/">
+        <Link className="site-title" to="/">
           <div className="site-logo">
-            <GingerbreadLogo />
+            <SiteLogo />
           </div>
-        </Link> */}
+        </Link>
       </HeaderWrapper>
     </>
   );
