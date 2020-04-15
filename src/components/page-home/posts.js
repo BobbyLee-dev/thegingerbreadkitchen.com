@@ -146,7 +146,7 @@ export default () => (
             return (
               <div className="single-post" key={post.uri}>
                 <h2 className="post-title">
-                  <Link to="to={`/blog/${post.uri}`}">{post.title}</Link>
+                  <Link to={`/blog/${post.uri}`}>{post.title}</Link>
                 </h2>
                 {post.categories.nodes.length > 0 && (
                   <div className="categories">
@@ -166,7 +166,7 @@ export default () => (
                   {new Date(post.date).toUTCString().slice(0, 16)}
                 </div>
                 {post.featuredImage && (
-                  <Link to="to={`/blog/${post.uri}`}" className="post-img">
+                  <Link to={`/blog/${post.uri}`} className="post-img">
                     <Img
                       alt={post.featuredImage.altText}
                       fluid={post.featuredImage.imageFile.childImageSharp.fluid}

@@ -8,7 +8,7 @@ const FooterWrap = styled.section``;
 const Footer = () => {
   return (
     <FooterWrap>
-      <UpperFooter />
+      {/* <UpperFooter /> */}
       <LowerFooter />
     </FooterWrap>
   );

@@ -1,10 +1,11 @@
 import React from 'react';
 // import { Link } from 'gatsby';
 import styled from 'styled-components';
-import { FaLinkedinIn, FaGithub, FaCodepen, FaList } from 'react-icons/fa';
+import { FaInstagram, FaWalking } from 'react-icons/fa';
 
 const LowerFooter = () => {
   const LowerFooterSection = styled.section`
+    background-color: #191919;
     position: relative;
     color: #fff;
     display: flex;
@@ -38,7 +39,6 @@ const LowerFooter = () => {
       margin: 0 15px;
     }
     a {
-      background-color: #262f38;
       font-size: 24px;
       line-height: 24px;
       width: 100%;
@@ -47,23 +47,54 @@ const LowerFooter = () => {
       justify-content: center;
       align-items: center;
       color: #fff;
-      transition: background 0.3s, color 0.3s, box-shadow 0.3s, transform 0.3s;
       cursor: pointer;
       &:hover {
-        background-color: rgb(85, 26, 139);
-        box-shadow: 0 0 0 3px rgba(4, 94, 201, 0.1);
-        transform: scale(0.9);
+        background: radial-gradient(
+          circle at 30% 107%,
+          #fdf497 0%,
+          #fdf497 5%,
+          #fd5949 45%,
+          #d6249f 60%,
+          #285aeb 90%
+        );
+        background: -webkit-radial-gradient(
+          circle at 30% 107%,
+          #fdf497 0%,
+          #fdf497 5%,
+          #fd5949 45%,
+          #d6249f 60%,
+          #285aeb 90%
+        );
+        background-clip: text;
+        -webkit-background-clip: text;
+      }
+      .instagram {
+        color: transparent;
+        background: radial-gradient(
+          circle at 30% 107%,
+          #fdf497 0%,
+          #fdf497 5%,
+          #fd5949 45%,
+          #d6249f 60%,
+          #285aeb 90%
+        );
       }
     }
   `;
 
   const CopyRight = styled.div`
-    text-transform: uppercase;
-    color: #8f9aa7;
-    font-size: 14px;
+    font-family: 'Overpass', sans-serif;
+    font-size: 16px;
+    .ginger-copy {
+      color: #fbf5ed;
+    }
     span {
-      color: #e31b6d;
-      font-family: 'Open Sans';
+      color: #dea08c;
+    }
+    .running-coder {
+      font-family: 'Amiri', serif;
+      font-size: 14px;
+      font-style: italic;
     }
   `;
 
@@ -72,47 +103,23 @@ const LowerFooter = () => {
       <SocialWrap>
         <SocialItem>
           <a
-            title="LinkedIn"
+            className="instagram"
+            title="Instagram"
             rel="nofollow noopener noreferrer"
             target="_blank"
-            href="https://www.linkedin.com/in/robert-lee-254341108/"
+            href="https://www.instagram.com/sonia.d.lee/"
           >
-            <FaLinkedinIn />
-          </a>
-        </SocialItem>
-        <SocialItem>
-          <a
-            title="GitHub"
-            rel="nofollow noopener noreferrer"
-            target="_blank"
-            href="https://github.com/runningCoder81"
-          >
-            <FaGithub />
-          </a>
-        </SocialItem>
-        <SocialItem>
-          <a
-            title="CodePen"
-            rel="nofollow noopener noreferrer"
-            target="_blank"
-            href="https://codepen.io/runningCoder/"
-          >
-            <FaCodepen />
-          </a>
-        </SocialItem>
-        <SocialItem>
-          <a
-            title="Sapphire Lists"
-            rel="nofollow noopener noreferrer"
-            target="_blank"
-            href="https://sapphirelists.netlify.com/"
-          >
-            <FaList />
+            <FaInstagram />
           </a>
         </SocialItem>
       </SocialWrap>
       <CopyRight>
-        Bobby Lee <span>©{new Date().getFullYear()}</span>
+        <p className="ginger-copy">
+          The Gingerbread Kitchen <span>©{new Date().getFullYear()}</span>
+        </p>
+        <p className="running-coder">
+          Website developed by The Running Coder <FaWalking />
+        </p>
       </CopyRight>
     </LowerFooterSection>
   );
