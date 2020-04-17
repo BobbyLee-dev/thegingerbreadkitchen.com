@@ -3,12 +3,7 @@ import React, { useState } from 'react';
 import { useSpring, animated } from 'react-spring';
 import styled from 'styled-components';
 import SubMenuButton from './sub-menu-button';
-import {
-  FaInstagram,
-  FaPinterest,
-  FaTwitter,
-  FaFacebookF
-} from 'react-icons/fa';
+import { FaInstagram } from 'react-icons/fa';
 
 const mobileNavBreakPoint = `890px`;
 const mobileNavMaxBreakPoint = `889px`;
@@ -247,9 +242,6 @@ const MainMenu = ({ style }) => {
       <NavWrap>
         <SocialNav>
           <FaInstagram />
-          <FaPinterest />
-          <FaTwitter />
-          <FaFacebookF />
         </SocialNav>
         <StyledBurger
           isBurgerOpen={isBurgerOpen}
