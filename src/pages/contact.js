@@ -8,8 +8,9 @@ const Contact = () => {
   return (
     <Layout>
       <SEO title="Contact" />
-      <h1>Hi from the Contact Page</h1>
-      <Link to="/">Go back to the homepage</Link>
+      <section className="content">
+        <h1>Hi from the Contact Page</h1>
+      </section>
     </Layout>
   );
 };

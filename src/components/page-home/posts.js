@@ -48,7 +48,7 @@ const PostsWrap = styled.div`
       font-family: 'Overpass', sans-serif;
       text-decoration: none;
       &:hover {
-        color: #000;
+        /* color: #000; */
       }
     }
   }
@@ -64,7 +64,7 @@ const PostsWrap = styled.div`
       color: black;
       text-decoration: none;
       &:hover {
-        text-decoration: underline;
+        /* text-decoration: underline; */
       }
     }
   }
@@ -96,10 +96,17 @@ const PostsWrap = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    &:hover {
+      color: #dea08c;
+      svg {
+        transform: scale(1.5);
+      }
+    }
     svg {
       margin-left: 5px;
       height: 20px;
       width: auto;
+      transition: all 0.5s;
     }
   }
 `;
@@ -153,9 +160,8 @@ export default () => (
                     {post.categories.nodes.map(category => {
                       return (
                         <>
-                          <Link to="/" className="single-category">
-                            {category.name}
-                          </Link>
+                          <div className="single-category">{category.name}</div>
+
                           <TiHeartFullOutline />
                         </>
                       );

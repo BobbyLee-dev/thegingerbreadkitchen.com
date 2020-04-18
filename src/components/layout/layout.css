@@ -651,10 +651,10 @@ section.content {
   }
 }
 
-/* .button {
-  background: linear-gradient(45deg, #cc1d5e, #162838);
-  border-radius: 25px;
-  padding: 12px 30px;
-  color: #fff !important;
+.button {
+  background: #fbf5ed;
+  padding: 5px 40px;
   text-decoration: none;
-} */
+  color: #222;
+  border: 1px solid #222;
+}

@@ -1,7 +1,7 @@
 import React from 'react';
-// import { Link } from 'gatsby';
+import { useStaticQuery, graphql, Link } from 'gatsby';
 import styled from 'styled-components';
-import { FaInstagram, FaWalking } from 'react-icons/fa';
+import { FaInstagram, FaRunning } from 'react-icons/fa';
 
 const LowerFooter = () => {
   const LowerFooterSection = styled.section`
@@ -13,6 +13,11 @@ const LowerFooter = () => {
     justify-content: center;
     align-items: center;
     padding-bottom: 40px !important;
+    a {
+      &:hover {
+        color: #dea08c;
+      }
+    }
     .back-to-top {
       width: 100%;
       display: flex;
@@ -28,7 +33,10 @@ const LowerFooter = () => {
 
   const SocialWrap = styled.div`
     display: flex;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
+    svg {
+      font-size: 42px;
+    }
   `;
 
   const SocialItem = styled.div`
@@ -48,36 +56,18 @@ const LowerFooter = () => {
       align-items: center;
       color: #fff;
       cursor: pointer;
-      &:hover {
-        background: radial-gradient(
-          circle at 30% 107%,
-          #fdf497 0%,
-          #fdf497 5%,
-          #fd5949 45%,
-          #d6249f 60%,
-          #285aeb 90%
-        );
-        background: -webkit-radial-gradient(
-          circle at 30% 107%,
-          #fdf497 0%,
-          #fdf497 5%,
-          #fd5949 45%,
-          #d6249f 60%,
-          #285aeb 90%
-        );
-        background-clip: text;
-        -webkit-background-clip: text;
-      }
-      .instagram {
-        color: transparent;
-        background: radial-gradient(
-          circle at 30% 107%,
-          #fdf497 0%,
-          #fdf497 5%,
-          #fd5949 45%,
-          #d6249f 60%,
-          #285aeb 90%
-        );
+    }
+  `;
+
+  const FooterNav = styled.ul`
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    list-style: none;
+    li {
+      margin: 10px 20px;
+      a {
+        color: #fff;
       }
     }
   `;
@@ -85,21 +75,53 @@ const LowerFooter = () => {
   const CopyRight = styled.div`
     font-family: 'Overpass', sans-serif;
     font-size: 16px;
-    .ginger-copy {
-      color: #fbf5ed;
+    font-family: 'Amiri', serif;
+    font-size: 14px;
+    a {
+      color: #fff;
+      text-decoration: none;
     }
-    span {
-      color: #dea08c;
-    }
-    .running-coder {
-      font-family: 'Amiri', serif;
-      font-size: 14px;
-      font-style: italic;
+    /* .running-coder {
+      &:hover {
+        color: rgb(250, 208, 0);
+      }
+    } */
+    svg {
+      margin-top: 5px;
+      font-size: 22px;
     }
   `;
 
+  const mainNav = useStaticQuery(graphql`
+    query FooterNavQuery {
+      wpgraphql {
+        menus {
+          nodes {
+            menuItems {
+              nodes {
+                url
+                label
+                id
+                childItems {
+                  nodes {
+                    label
+                    url
+                    id
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  `);
+
+  const navItemObjects = mainNav.wpgraphql.menus.nodes[0].menuItems.nodes;
+
   return (
     <LowerFooterSection className="content">
+      <div>View more and see my most recent creations:</div>
       <SocialWrap>
         <SocialItem>
           <a
@@ -113,13 +135,52 @@ const LowerFooter = () => {
           </a>
         </SocialItem>
       </SocialWrap>
+
+      <FooterNav>
+        {navItemObjects.map(item => {
+          return (
+            <React.Fragment key={item.id}>
+              <li
+                className={
+                  item.childItems.nodes.length > 0 ? 'has-sub-menu' : ''
+                }
+              >
+                <Link
+                  to={(() => {
+                    if (item.url.includes('sapphireapi.com')) {
+                      return item.url.replace(
+                        'https://sapphireapi.com/sofya',
+                        ''
+                      );
+                    } else {
+                      return item.url; // make into no link somehow
+                    }
+                  })()}
+                >
+                  {item.label}
+                </Link>
+              </li>
+            </React.Fragment>
+          );
+        })}
+      </FooterNav>
+
       <CopyRight>
-        <p className="ginger-copy">
-          The Gingerbread Kitchen <span>©{new Date().getFullYear()}</span>
-        </p>
-        <p className="running-coder">
-          Website developed by The Running Coder <FaWalking />
-        </p>
+        <div>
+          Copyright ©{new Date().getFullYear()} The Gingerbread Kitchen -
+          Healthy Comfort Food. All rights reserved
+        </div>
+        <a
+          className="running-coder"
+          href="https://www.therunningcoder.com/"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          <div>Website developed by The Running Coder</div>
+          <div>
+            <FaRunning />
+          </div>
+        </a>
       </CopyRight>
     </LowerFooterSection>
   );

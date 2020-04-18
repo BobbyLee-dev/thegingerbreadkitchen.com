@@ -141,9 +141,16 @@ const SocialNav = styled.div`
   position: relative;
   z-index: 100;
   display: flex;
+  a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: #222;
+  }
   svg {
     margin: 0 5px;
-    font-size: 16px;
+    font-size: 20px;
     @media (min-width: ${mobileNavBreakPoint}) {
       font-size: 18px;
     }
@@ -241,7 +248,13 @@ const MainMenu = ({ style }) => {
     <>
       <NavWrap>
         <SocialNav>
-          <FaInstagram />
+          <a
+            href="https://www.instagram.com/sonia.d.lee/"
+            target="_blank"
+            rel=" noopener noreferrer"
+          >
+            <FaInstagram /> Follow Me
+          </a>
         </SocialNav>
         <StyledBurger
           isBurgerOpen={isBurgerOpen}
@@ -273,7 +286,7 @@ const MainMenu = ({ style }) => {
                       to={(() => {
                         if (item.url.includes('sapphireapi.com')) {
                           return item.url.replace(
-                            'https://sapphireapi.com/therunningcoder',
+                            'https://sapphireapi.com/sofya',
                             ''
                           );
                         } else {

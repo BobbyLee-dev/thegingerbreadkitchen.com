@@ -138,6 +138,9 @@ const PostTemplate = ({
     wpgraphql: { post }
   }
 }) => {
+  function goBack() {
+    window.history.back();
+  }
   return (
     <Layout>
       <SEO title="Home" />
@@ -175,9 +178,11 @@ const PostTemplate = ({
               }}
             />
           </div>
+          <button onClick={goBack} className="button" to="/">
+            Back
+          </button>
         </section>
       </PostWrap>
-      <Link to="/">Back</Link>
     </Layout>
   );
 };
