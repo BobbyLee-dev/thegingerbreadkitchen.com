@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `Gingerbread Stories`,
-    description: `Sonia Lee's blog - Art, painting, cooking, surfing, corgies.`,
+    description: `The Gingerbread Kitchen, healthy comfort food.`,
     author: `@runningCoder81`
   },
   plugins: [
@@ -33,8 +33,8 @@ module.exports = {
         name: `gatsby-starter-default`,
         short_name: `starter`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
+        background_color: `#FBF5ED`,
+        theme_color: `#FBF5ED`,
         display: `minimal-ui`,
         icon: `src/images/favicon.png` // This path is relative to the root of the site.
       }

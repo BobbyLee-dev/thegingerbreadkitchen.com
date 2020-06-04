@@ -10,6 +10,8 @@ const PostsWrap = styled.div`
   flex-wrap: wrap;
   justify-content: space-between;
   .single-post {
+    /* display: flex;
+    flex-direction: column; */
     background-color: white;
     width: 100%;
     border-radius: 15px;
@@ -20,10 +22,25 @@ const PostsWrap = styled.div`
     }
     &:first-of-type {
       width: 100%;
+      .post-title {
+        /* line-height: 16.9px; */
+        a {
+          font-size: 32px;
+          color: #000000;
+          text-transform: uppercase;
+        }
+      }
+      .excerpt {
+        display: block;
+      }
+      .continue-reading {
+        display: flex;
+      }
     }
     .post-img {
-      margin-bottom: 15px;
-      display: block;
+      .gatsby-image-wrapper {
+        margin: 0 auto 30px;
+      }
     }
   }
   .categories {
@@ -43,7 +60,10 @@ const PostsWrap = styled.div`
     .single-category {
       text-transform: uppercase;
       color: #dea08c;
-      font-size: 14px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
       margin: 10px;
       font-family: 'Overpass', sans-serif;
       text-decoration: none;
@@ -53,14 +73,16 @@ const PostsWrap = styled.div`
     }
   }
   .post-title {
+    margin-top: 0;
     font-family: 'Amiri', serif;
     font-size: 24px;
-    margin-bottom: 0;
-    line-height: 1.25em;
+    margin-bottom: 10px;
+    line-height: 1em;
     @media (min-width: 768px) {
       font-size: 40px;
     }
     a {
+      line-height: 1em;
       color: black;
       text-decoration: none;
       &:hover {
@@ -72,12 +94,14 @@ const PostsWrap = styled.div`
     font-family: 'Overpass', sans-serif;
     text-transform: uppercase;
     color: #414141;
-    font-size: 14px;
+    font-size: 10px;
+    letter-spacing: 1.5px;
     margin-bottom: 20px;
   }
   .excerpt {
+    display: none;
+    text-align: left;
     font-family: 'Amiri', serif;
-    font-size: 17px;
     color: #222222;
     margin-bottom: 15px;
     * {
@@ -87,15 +111,15 @@ const PostsWrap = styled.div`
     }
   }
   .continue-reading {
+    display: none;
     text-decoration: none;
     text-transform: uppercase;
     font-size: 14px;
     font-weight: 700;
     letter-spacing: 2px;
     color: #000;
-    display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     &:hover {
       color: #dea08c;
       svg {
@@ -132,7 +156,7 @@ export default () => (
                 altText
                 imageFile {
                   childImageSharp {
-                    fluid(traceSVG: { color: "#f00e2e" }) {
+                    fluid(traceSVG: { color: "#FBF5ED" }) {
                       ...GatsbyImageSharpFluid_tracedSVG
                     }
                   }
@@ -149,28 +173,38 @@ export default () => (
 
       return (
         <PostsWrap>
-          {allPosts.map(post => {
+          {allPosts.map((post, index) => {
+            console.log(index);
+
             return (
               <div className="single-post" key={post.uri}>
-                <h2 className="post-title">
-                  <Link to={`/blog/${post.uri}`}>{post.title}</Link>
-                </h2>
-                {post.categories.nodes.length > 0 && (
-                  <div className="categories">
-                    {post.categories.nodes.map(category => {
-                      return (
-                        <>
-                          <div className="single-category">{category.name}</div>
+                {index === 0 &&
+                  (post.categories.nodes.length > 0 && (
+                    <div className="categories">
+                      {post.categories.nodes.map(category => {
+                        return (
+                          <>
+                            <div className="single-category">
+                              {category.name}
+                            </div>
 
-                          <TiHeartFullOutline />
-                        </>
-                      );
-                    })}
+                            <TiHeartFullOutline />
+                          </>
+                        );
+                      })}
+                    </div>
+                  ))}
+                {index === 0 && (
+                  <h2 className="post-title">
+                    <Link to={`/blog/${post.uri}`}>{post.title}</Link>
+                  </h2>
+                )}
+                {index === 0 && (
+                  <div className="post-date">
+                    {new Date(post.date).toUTCString().slice(0, 16)}
                   </div>
                 )}
-                <div className="post-date">
-                  {new Date(post.date).toUTCString().slice(0, 16)}
-                </div>
+
                 {post.featuredImage && (
                   <Link to={`/blog/${post.uri}`} className="post-img">
                     <Img
@@ -189,6 +223,32 @@ export default () => (
                 <Link className="continue-reading" to={`/blog/${post.uri}`}>
                   Continue Reading <GiCupidonArrow />
                 </Link>
+                {index > 0 &&
+                  (post.categories.nodes.length > 0 && (
+                    <div className="categories">
+                      {post.categories.nodes.map(category => {
+                        return (
+                          <>
+                            <div className="single-category">
+                              {category.name}
+                            </div>
+
+                            <TiHeartFullOutline />
+                          </>
+                        );
+                      })}
+                    </div>
+                  ))}
+                {index > 0 && (
+                  <h2 className="post-title">
+                    <Link to={`/blog/${post.uri}`}>{post.title}</Link>
+                  </h2>
+                )}
+                {index > 0 && (
+                  <div className="post-date">
+                    {new Date(post.date).toUTCString().slice(0, 16)}
+                  </div>
+                )}
               </div>
             );
           })}

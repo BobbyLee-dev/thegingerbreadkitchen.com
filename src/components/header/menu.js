@@ -22,7 +22,9 @@ const NavWrap = styled.div`
   z-index: 100;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  @media (min-width: 768px) {
+    justify-content: center;
+  }
   @media (min-width: ${mobileNavBreakPoint}) {
     padding: 10px 40px;
   }
@@ -88,7 +90,7 @@ const Menu = styled.ul`
       display: block;
       padding: 16px 20px;
       text-decoration: none;
-      font-size: 20px;
+      font-size: 11px;
       line-height: 100%;
       transition: opacity 0.2s;
       @media (min-width: 600px) {
@@ -96,7 +98,7 @@ const Menu = styled.ul`
       }
       @media (min-width: ${mobileNavBreakPoint}) {
         padding: 10px 20px;
-        font-size: 14px;
+        font-size: 11px;
       }
       /* &:hover {
         opacity: 0.7;
@@ -138,21 +140,26 @@ const Menu = styled.ul`
 `;
 
 const SocialNav = styled.div`
-  position: relative;
+  position: absolute;
+  right: 20px;
   z-index: 100;
   display: flex;
+  @media (min-width: 768px) {
+    left: 40px;
+  }
   a {
     display: flex;
     justify-content: center;
     align-items: center;
     text-decoration: none;
     color: #222;
+    font-size: 11px;
   }
   svg {
     margin: 0 5px;
-    font-size: 20px;
+    font-size: 12px;
     @media (min-width: ${mobileNavBreakPoint}) {
-      font-size: 18px;
+      /* font-size: 18px; */
     }
   }
 `;
