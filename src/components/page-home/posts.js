@@ -10,18 +10,23 @@ const PostsWrap = styled.div`
   flex-wrap: wrap;
   justify-content: space-between;
   .single-post {
-    /* display: flex;
-    flex-direction: column; */
+    display: flex;
+    flex-direction: column;
     background-color: white;
     width: 100%;
     border-radius: 15px;
     margin-bottom: 60px;
     /* box-shadow: 0px 10px 30px -5px rgba(0, 0, 0, 0.3); */
-    @media (min-width: 768px) {
+    @media (min-width: 600px) {
       width: 47%;
     }
     &:first-of-type {
       width: 100%;
+      .post-img {
+        .gatsby-image-wrapper {
+          margin: 0 auto 30px;
+        }
+      }
       .post-title {
         /* line-height: 16.9px; */
         a {
@@ -38,8 +43,9 @@ const PostsWrap = styled.div`
       }
     }
     .post-img {
+      flex: 1 0 auto;
       .gatsby-image-wrapper {
-        margin: 0 auto 30px;
+        margin: 0 auto 15px;
       }
     }
   }
@@ -49,7 +55,7 @@ const PostsWrap = styled.div`
     align-items: center;
     svg {
       width: auto;
-      height: 20px;
+      height: 14px;
       path {
         fill: #d5d5d5;
       }
@@ -64,7 +70,7 @@ const PostsWrap = styled.div`
       font-weight: 700;
       letter-spacing: 1.5px;
       text-transform: uppercase;
-      margin: 10px;
+      margin: 0 10px;
       font-family: 'Overpass', sans-serif;
       text-decoration: none;
       &:hover {
@@ -76,7 +82,7 @@ const PostsWrap = styled.div`
     margin-top: 0;
     font-family: 'Amiri', serif;
     font-size: 24px;
-    margin-bottom: 10px;
+    margin-bottom: 0;
     line-height: 1em;
     @media (min-width: 768px) {
       font-size: 40px;
@@ -96,7 +102,7 @@ const PostsWrap = styled.div`
     color: #414141;
     font-size: 10px;
     letter-spacing: 1.5px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
   }
   .excerpt {
     display: none;

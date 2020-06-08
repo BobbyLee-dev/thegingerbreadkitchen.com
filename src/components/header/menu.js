@@ -141,6 +141,7 @@ const Menu = styled.ul`
 
 const SocialNav = styled.div`
   position: absolute;
+  width: fit-content;
   right: 20px;
   z-index: 100;
   display: flex;

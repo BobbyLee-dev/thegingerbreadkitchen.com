@@ -8,12 +8,15 @@ import SiteLogo from '../../images/site-logo';
 const HeaderWrapper = styled.header`
   font-family: 'Overpass', sans-serif;
   background-color: white;
+
   /* box-shadow: 0px 10px 30px -5px rgba(0, 0, 0, 0.3); */
+  border-bottom: 1px solid #eee;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   padding: 10px 20px;
   align-items: center;
+  margin-bottom: 50px;
   @media (min-width: 1400px) {
     padding: 10px 40px;
   }
@@ -29,8 +32,8 @@ const HeaderWrapper = styled.header`
     margin-top: 50px;
     margin-bottom: 50px;
     @media (min-width: 890px) {
-      margin-top: 100px;
-      margin-bottom: 100px;
+      /* margin-top: 100px; */
+      /* margin-bottom: 100px; */
     }
     .site-logo {
       svg {
