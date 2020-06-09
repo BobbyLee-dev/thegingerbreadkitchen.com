@@ -28,6 +28,7 @@ const PostsWrap = styled.div`
         }
       }
       .post-title {
+        margin-bottom: 10px;
         /* line-height: 16.9px; */
         a {
           font-size: 32px;
@@ -81,14 +82,15 @@ const PostsWrap = styled.div`
   .post-title {
     margin-top: 0;
     font-family: 'Amiri', serif;
-    font-size: 24px;
+    font-size: 18px;
     margin-bottom: 0;
-    line-height: 1em;
+    /* line-height: 100%; */
+    text-transform: uppercase;
     @media (min-width: 768px) {
-      font-size: 40px;
+      font-size: 20px;
     }
     a {
-      line-height: 1em;
+      /* line-height: 1em; */
       color: black;
       text-decoration: none;
       &:hover {
@@ -97,6 +99,7 @@ const PostsWrap = styled.div`
     }
   }
   .post-date {
+    display: none;
     font-family: 'Overpass', sans-serif;
     text-transform: uppercase;
     color: #414141;
@@ -120,7 +123,7 @@ const PostsWrap = styled.div`
     display: none;
     text-decoration: none;
     text-transform: uppercase;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 700;
     letter-spacing: 2px;
     color: #000;
