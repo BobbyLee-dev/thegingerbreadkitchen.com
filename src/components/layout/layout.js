@@ -13,6 +13,30 @@ import Header from '../header/header';
 import './layout.css';
 import useSiteMetadata from '../../hooks/use-sitemetadata';
 import Footer from '../footer/footer';
+import Sidebar from '../sidebar';
+import styled from 'styled-components';
+
+const ContentWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  @media (min-width: 1000px) {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding-left: calc(20px + (50% - (1000px / 2)));
+    padding-right: calc(20px + (50% - (1000px / 2)));
+  }
+  main {
+  }
+  aside {
+    width: 100%;
+    @media (min-width: 1000px) {
+      width: 300px;
+    }
+  }
+`;
 
 const Layout = ({ children }) => {
   const { title } = useSiteMetadata();
@@ -20,14 +44,10 @@ const Layout = ({ children }) => {
   return (
     <>
       <Header siteTitle={title} />
-      <div style={{}}>
+      <ContentWrap>
         <main>{children}</main>
-        {/* <section className="content">
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </section> */}
-      </div>
+        <Sidebar />
+      </ContentWrap>
       <Footer data={children} />
     </>
   );

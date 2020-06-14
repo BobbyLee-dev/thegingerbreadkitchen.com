@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `Gingerbread Stories`,
+    title: `Gingerbread Kitchen`,
     description: `The Gingerbread Kitchen, healthy comfort food.`,
     author: `@runningCoder81`
   },

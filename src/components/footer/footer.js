@@ -3,7 +3,7 @@ import styled from 'styled-components';
 // import UpperFooter from './upper-footer';
 import LowerFooter from './lower-footer';
 
-const FooterWrap = styled.section``;
+const FooterWrap = styled.footer``;
 
 const Footer = () => {
   return (

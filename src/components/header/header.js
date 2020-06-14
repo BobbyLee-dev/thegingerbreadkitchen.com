@@ -29,15 +29,15 @@ const HeaderWrapper = styled.header`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top: 50px;
-    margin-bottom: 50px;
-    @media (min-width: 890px) {
-      /* margin-top: 100px; */
-      /* margin-bottom: 100px; */
+    margin-top: 20px;
+    margin-bottom: 20px;
+    @media (min-width: 768px) {
+      margin-top: 50px;
+      margin-bottom: 50px;
     }
     .site-logo {
       svg {
-        width: 1000px;
+        width: 600px;
         height: auto;
         max-width: 100%;
       }
