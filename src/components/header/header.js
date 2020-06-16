@@ -37,7 +37,7 @@ const HeaderWrapper = styled.header`
     }
     .site-logo {
       svg {
-        width: 600px;
+        width: 800px;
         height: auto;
         max-width: 100%;
       }

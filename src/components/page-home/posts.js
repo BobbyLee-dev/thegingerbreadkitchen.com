@@ -46,7 +46,7 @@ const PostsWrap = styled.div`
     .post-img {
       flex: 1 0 auto;
       .gatsby-image-wrapper {
-        margin: 0 auto 15px;
+        margin: 0 auto 10px;
       }
     }
   }
@@ -85,7 +85,7 @@ const PostsWrap = styled.div`
     font-size: 18px;
     margin-bottom: 0;
     /* line-height: 100%; */
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
     @media (min-width: 768px) {
       font-size: 20px;
     }

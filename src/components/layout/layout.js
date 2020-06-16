@@ -21,12 +21,16 @@ const ContentWrap = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  @media (min-width: 1000px) {
+  padding-bottom: 40px;
+  @media (min-width: 768px) {
+    padding-bottom: 80px;
+  }
+  @media (min-width: 1150px) {
     flex-direction: row;
     align-items: flex-start;
     justify-content: space-between;
-    padding-left: calc(20px + (50% - (1000px / 2)));
-    padding-right: calc(20px + (50% - (1000px / 2)));
+    padding-left: calc(20px + (50% - (1150px / 2)));
+    padding-right: calc(20px + (50% - (1150px / 2)));
   }
   main {
   }
@@ -40,7 +44,6 @@ const ContentWrap = styled.div`
 
 const Layout = ({ children }) => {
   const { title } = useSiteMetadata();
-
   return (
     <>
       <Header siteTitle={title} />
