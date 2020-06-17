@@ -44,12 +44,14 @@ const ContentWrap = styled.div`
 
 const Layout = ({ children }) => {
   const { title } = useSiteMetadata();
+  console.log('hi===============');
+  console.log(children);
   return (
     <>
       <Header siteTitle={title} />
       <ContentWrap>
         <main>{children}</main>
-        <Sidebar />
+        <Sidebar currentPage={children[0].props.title} />
       </ContentWrap>
       <Footer data={children} />
     </>

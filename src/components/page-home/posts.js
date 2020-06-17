@@ -183,8 +183,6 @@ export default () => (
       return (
         <PostsWrap>
           {allPosts.map((post, index) => {
-            console.log(index);
-
             return (
               <div className="single-post" key={post.uri}>
                 {index === 0 &&
