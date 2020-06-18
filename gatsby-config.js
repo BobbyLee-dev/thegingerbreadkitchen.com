@@ -2,11 +2,13 @@ module.exports = {
   siteMetadata: {
     title: `Gingerbread Kitchen`,
     description: `The Gingerbread Kitchen, healthy comfort food.`,
-    author: `@runningCoder81`
+    author: `@runningCoder81`,
+    siteUrl: `https://thegingerbreadkitchen.com/`
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-styled-components`,
+    `gatsby-plugin-sitemap`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
