@@ -9,11 +9,12 @@ const mobileNavBreakPoint = `890px`;
 const mobileNavMaxBreakPoint = `889px`;
 
 const NavWrap = styled.div`
+  box-shadow: 0px 2px 12px -5px rgba(0, 0, 0, 0.3);
   @media (max-width: ${mobileNavMaxBreakPoint}) {
     height: 40px;
   }
   padding: 10px 20px;
-  background-color: #fbf5ed;
+  background-color: #e3c6bc;
   position: fixed;
   left: 0;
   right: 0;
@@ -33,7 +34,7 @@ const NavWrap = styled.div`
 const MainNav = styled(animated.nav)`
   padding-left: 40px;
   @media (max-width: ${mobileNavMaxBreakPoint}) {
-    background-color: #fbf5ed;
+    /* background-color: #fbf5ed; */
     position: fixed;
     width: 100%;
     height: 100%;
@@ -64,7 +65,7 @@ const MainNav = styled(animated.nav)`
     opacity: 1 !important;
   }
   &.open {
-    background-color: #fbf5ed;
+    background-color: #e3c6bc;
     /* background: linear-gradient(
       90deg,
       rgba(51, 12, 131, 1) 29%,
@@ -85,7 +86,7 @@ const Menu = styled.ul`
     display: flex;
     align-items: center;
     a {
-      color: #000;
+      color: #fff;
       text-transform: uppercase;
       display: block;
       padding: 16px 20px;
@@ -153,7 +154,7 @@ const SocialNav = styled.div`
     justify-content: center;
     align-items: center;
     text-decoration: none;
-    color: #222;
+    color: #fff;
     font-size: 11px;
   }
   svg {

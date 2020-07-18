@@ -48,7 +48,7 @@ const Layout = ({ children }) => {
   console.log(children);
   return (
     <>
-      <Header siteTitle={title} />
+      <Header siteTitle={title} currentPage={children[0].props.title} />
       <ContentWrap>
         <main>{children}</main>
         <Sidebar currentPage={children[0].props.title} />

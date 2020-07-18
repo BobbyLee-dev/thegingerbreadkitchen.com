@@ -7,7 +7,6 @@ import SiteLogo from '../../images/site-logo';
 
 const HeaderWrapper = styled.header`
   font-family: 'Overpass', sans-serif;
-  background-color: white;
 
   /* box-shadow: 0px 10px 30px -5px rgba(0, 0, 0, 0.3); */
   border-bottom: 1px solid #eee;
@@ -35,13 +34,13 @@ const HeaderWrapper = styled.header`
       margin-top: 50px;
       margin-bottom: 50px;
     }
-    .site-logo {
-      svg {
-        width: 800px;
-        height: auto;
-        max-width: 100%;
-      }
+
+    svg {
+      width: 100%;
+      height: auto;
+      max-width: 100%;
     }
+
     h1 {
       text-transform: uppercase;
       font-weight: 400;
@@ -58,16 +57,25 @@ const HeaderWrapper = styled.header`
   }
 `;
 
-const Header = ({ siteTitle }) => {
+const Header = ({ siteTitle, currentPage }) => {
   return (
     <>
       <HeaderWrapper>
         <MainMenu />
-        <Link className="site-title" to="/">
-          <div className="site-logo">
-            <SiteLogo />
+        {currentPage === 'Home' && (
+          <h1>
+            <Link className="site-title" to="/">
+              <SiteLogo />
+            </Link>
+          </h1>
+        )}
+        {currentPage !== 'Home' && (
+          <div>
+            <Link className="site-title" to="/">
+              <SiteLogo />
+            </Link>
           </div>
-        </Link>
+        )}
       </HeaderWrapper>
     </>
   );
