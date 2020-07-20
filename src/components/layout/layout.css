@@ -667,9 +667,18 @@ footer section.content {
 }
 
 .button {
-  background: #fbf5ed;
+  background: #d3a595;
   padding: 5px 40px;
   text-decoration: none;
-  color: #222;
-  border: 1px solid #222;
+  color: #fff;
+  /* border: 1px solid #222; */
+  border-radius: 5px;
+  font-weight: bold;
+  border: 1px solid #d3a595;
+}
+
+.button:hover {
+  background: #fff;
+  color: #d3a595;
+  border-color: #d3a595;
 }

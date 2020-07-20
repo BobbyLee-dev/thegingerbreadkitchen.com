@@ -29,9 +29,9 @@ const Home = ({ data }) => {
   return (
     <Layout>
       <SEO title="Home" />
-      <ContentWrap className="content">
-        <Posts />
-      </ContentWrap>
+      {/* <ContentWrap className="content"> */}
+      <Posts />
+      {/* </ContentWrap> */}
     </Layout>
   );
 };

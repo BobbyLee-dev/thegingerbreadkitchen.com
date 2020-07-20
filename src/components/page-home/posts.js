@@ -6,10 +6,12 @@ import { TiHeartFullOutline } from 'react-icons/ti';
 import { GiCupidonArrow } from 'react-icons/gi';
 
 const PostsWrap = styled.div`
+  max-width: 750px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   .single-post {
+    padding: 20px;
     display: flex;
     flex-direction: column;
     background-color: white;
@@ -20,8 +22,15 @@ const PostsWrap = styled.div`
     @media (min-width: 600px) {
       width: 47%;
     }
+    @media (min-width: 768px) {
+      padding: 20px 20px 35px;
+    }
     &:first-of-type {
+      padding: 20px;
       width: 100%;
+      @media (min-width: 768px) {
+        padding: 35px 70px;
+      }
       .post-img {
         .gatsby-image-wrapper {
           margin: 0 auto 30px;
@@ -29,6 +38,7 @@ const PostsWrap = styled.div`
       }
       .post-title {
         margin-bottom: 10px;
+        text-align: center;
         /* line-height: 16.9px; */
         a {
           font-size: 32px;

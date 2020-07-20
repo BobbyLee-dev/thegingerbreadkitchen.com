@@ -5,17 +5,45 @@ import Img from 'gatsby-image';
 
 const Aside = styled.aside`
   max-width: 300px;
-  margin: 73px 0 auto 0;
+  /* margin: 73px 0 auto 0; */
 `;
 
 const AboutMeBlock = styled.div`
   .img-wrap {
-    border-radius: 50%;
+    border-radius: 11px;
     overflow: hidden;
     margin-bottom: 20px;
   }
   h2 {
     text-align: center;
+    font-family: 'Tangerine', cursive;
+    font-size: 50px;
+  }
+  .about-me {
+    background: #fff;
+    padding: 20px;
+  }
+`;
+
+const Categories = styled.div`
+  a {
+    display: block;
+    padding: 15px 10px;
+    background: #fff;
+    margin: 20px 0;
+    color: #a24d4a;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+    line-height: 100%;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    /* transition: all 0.3s; */
+    &:hover {
+      background: #d3a595;
+      color: #fff;
+    }
   }
 `;
 
@@ -43,6 +71,14 @@ const Sidebar = props => {
                     }
                   }
                 }
+              }
+            }
+            categories {
+              nodes {
+                link
+                id
+                name
+                slug
               }
             }
           }
@@ -73,6 +109,15 @@ const Sidebar = props => {
                 </Link>
               </div>
             </AboutMeBlock>
+          )}
+          {data.wpgraphql.categories.nodes.length > 1 && (
+            <Categories>
+              {data.wpgraphql.categories.nodes.map(category => {
+                return (
+                  <Link to={`category/${category.slug}`}>{category.name}</Link>
+                );
+              })}
+            </Categories>
           )}
         </Aside>
       )}

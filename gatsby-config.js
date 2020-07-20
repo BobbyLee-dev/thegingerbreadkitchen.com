@@ -22,7 +22,9 @@ module.exports = {
         google: {
           families: [
             'Overpass:400,400i,700,700i',
-            'Amiri|PT+Serif:400,400i,700'
+            'Amiri|PT+Serif:400,400i,700',
+            'Tangerine:400,700', // font-family: 'Tangerine', cursive;
+            'Montserrat:400,400i,600' // font-family: 'Montserrat', sans-serif;
           ]
         }
       }

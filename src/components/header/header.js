@@ -13,14 +13,18 @@ const HeaderWrapper = styled.header`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 10px 20px;
+  padding: 60px 20px 50px;
   align-items: center;
-  margin-bottom: 50px;
+  @media (min-width: 768px) {
+    padding: 100px 20px 75px;
+  }
+  @media (min-width: 1150px) {
+    padding: 120px 20px;
+  }
   @media (min-width: 1400px) {
-    padding: 10px 40px;
+    /* padding: 60px 20px 40px; */
   }
   @media (min-width: 2000px) {
-    padding: 10px 80px;
   }
   .site-title {
     text-decoration: none;
@@ -28,13 +32,7 @@ const HeaderWrapper = styled.header`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    @media (min-width: 768px) {
-      margin-top: 50px;
-      margin-bottom: 50px;
-    }
-
+    margin: 0;
     svg {
       width: 100%;
       height: auto;
@@ -63,15 +61,15 @@ const Header = ({ siteTitle, currentPage }) => {
       <HeaderWrapper>
         <MainMenu />
         {currentPage === 'Home' && (
-          <h1>
-            <Link className="site-title" to="/">
+          <h1 className="site-title">
+            <Link to="/">
               <SiteLogo />
             </Link>
           </h1>
         )}
         {currentPage !== 'Home' && (
-          <div>
-            <Link className="site-title" to="/">
+          <div className="site-title">
+            <Link to="/">
               <SiteLogo />
             </Link>
           </div>

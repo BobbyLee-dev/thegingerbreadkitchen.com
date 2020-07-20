@@ -22,6 +22,8 @@ const ContentWrap = styled.div`
   align-items: center;
   justify-content: center;
   padding-bottom: 40px;
+  padding-left: 20px;
+  padding-right: 20px;
   @media (min-width: 768px) {
     padding-bottom: 80px;
   }
@@ -44,8 +46,6 @@ const ContentWrap = styled.div`
 
 const Layout = ({ children }) => {
   const { title } = useSiteMetadata();
-  console.log('hi===============');
-  console.log(children);
   return (
     <>
       <Header siteTitle={title} currentPage={children[0].props.title} />
