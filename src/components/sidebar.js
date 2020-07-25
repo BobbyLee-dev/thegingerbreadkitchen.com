@@ -2,6 +2,7 @@ import React from 'react';
 import { StaticQuery, graphql, Link } from 'gatsby';
 import styled from 'styled-components';
 import Img from 'gatsby-image';
+import AboutUsSvg from '../images/about-us';
 
 const Aside = styled.aside`
   max-width: 300px;
@@ -16,11 +17,14 @@ const AboutMeBlock = styled.div`
   }
   h2 {
     text-align: center;
-    font-family: 'Tangerine', cursive;
-    font-size: 50px;
+    margin-bottom: 10px;
+    svg {
+      width: 200px;
+      height: auto;
+    }
   }
   .about-me {
-    background: #fff;
+    background: #fffbf8;
     padding: 20px;
   }
 `;
@@ -29,7 +33,7 @@ const Categories = styled.div`
   a {
     display: block;
     padding: 15px 10px;
-    background: #fff;
+    background: #fffbf8;
     margin: 20px 0;
     color: #a24d4a;
     text-decoration: none;
@@ -99,6 +103,9 @@ const Sidebar = props => {
                 />
               </div>
               <div className="about-me">
+                <h2>
+                  <AboutUsSvg />
+                </h2>
                 <div
                   dangerouslySetInnerHTML={{
                     __html: data.wpgraphql.pageBy.Sidebar.aboutMeText

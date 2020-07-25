@@ -50,27 +50,17 @@ const MainNav = styled(animated.nav)`
     padding-left: 150px;
   }
   @media (min-width: ${mobileNavBreakPoint}) {
-    /* background-color: white; */
     padding-left: 0;
-    /* padding: 0 40px; */
-    /* position: fixed; */
-    /* left: 0;
-    right: 0;
-    width: 100%;
-    top: 0;
-    z-index: 100; */
     display: flex !important;
     justify-content: center;
     align-items: flex-end;
     opacity: 1 !important;
   }
   &.open {
-    background-color: #e3c6bc;
-    /* background: linear-gradient(
-      90deg,
-      rgba(51, 12, 131, 1) 29%,
-      rgba(55, 180, 146, 1) 100%
-    ); */
+    /* background-color: #e3c6bc; */
+    @media (max-width: ${mobileNavMaxBreakPoint}) {
+      background: linear-gradient(90deg, #e3c6be 29%, #f7eeea 100%);
+    }
   }
 `;
 
@@ -86,7 +76,7 @@ const Menu = styled.ul`
     display: flex;
     align-items: center;
     a {
-      color: #fff;
+      color: #000;
       text-transform: uppercase;
       display: block;
       padding: 16px 20px;
@@ -154,7 +144,7 @@ const SocialNav = styled.div`
     justify-content: center;
     align-items: center;
     text-decoration: none;
-    color: #fff;
+    color: #000;
     font-size: 11px;
   }
   svg {

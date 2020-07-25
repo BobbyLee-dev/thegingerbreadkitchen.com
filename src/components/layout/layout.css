@@ -1,6 +1,6 @@
 html {
   /* font-family: 'Amiri', serif; */
-  font-family: 'Amiri', serif;
+  font-family: 'Montserrat', sans-serif;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 }
@@ -10,8 +10,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   position: relative;
-  font-size: 17.5px;
-  line-height: 28px;
+  font-size: 16px;
+  line-height: 26px;
   background-color: #f7eeea;
 }
 
@@ -227,7 +227,7 @@ html {
 }
 body {
   color: hsla(0, 0%, 0%, 0.8);
-  font-family: 'Amiri', serif;
+  font-family: 'Montserrat', sans-serif;
   font-weight: normal;
   word-wrap: break-word;
   font-kerning: normal;
@@ -678,7 +678,7 @@ footer section.content {
 }
 
 .button:hover {
-  background: #fff;
+  background: #fffbf8;
   color: #d3a595;
   border-color: #d3a595;
 }
