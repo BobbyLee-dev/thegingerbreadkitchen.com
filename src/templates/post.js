@@ -166,6 +166,21 @@ export const query = graphql`
             }
           }
         }
+        recipe {
+          servingSize
+          prepTime
+          cookTime
+          ingredients {
+            fieldGroupName
+            ingredient
+          }
+          preparation {
+            fieldGroupName
+            prepItem
+          }
+
+          fieldGroupName
+        }
       }
     }
   }
@@ -218,6 +233,15 @@ const PostTemplate = ({
               __html: post.content
             }}
           />
+          {/* <div
+            className="recipe"
+            dangerouslySetInnerHTML={{
+              __html: post.recipe
+            }}
+          /> */}
+          {post.recipe.servingSize && (
+            <pre>{JSON.stringify(post.recipe, null, 2)}</pre>
+          )}
         </div>
         <button onClick={goBack} className="button" to="/">
           Back
