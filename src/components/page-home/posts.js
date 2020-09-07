@@ -44,6 +44,7 @@ const PostsWrap = styled.div`
         /* line-height: 16.9px; */
         a {
           font-size: 32px;
+          line-height: 1.1em;
           font-weight: 700;
           color: #000000;
           text-transform: uppercase;

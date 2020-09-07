@@ -64,43 +64,37 @@ const PostWrap = styled.div`
       display: flex;
       justify-content: center;
       align-items: center;
-      svg {
-        width: auto;
-        height: 20px;
-        path {
-          fill: #d5d5d5;
-        }
+      margin-bottom: 10px;
+      color: #bc5a5a;
+      .cat-sep {
+        font-size: 11px;
         &:last-of-type {
           display: none;
         }
       }
       .single-category {
         text-transform: uppercase;
-        color: #dea08c;
-        font-size: 14px;
-        margin: 10px;
-        font-family: 'Overpass', sans-serif;
+        color: #bc5a5a;
+        font-size: 11px;
+        font-weight: 400;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        margin: 0 5px;
+        font-family: 'Montserrat', sans-serif;
         text-decoration: none;
         &:hover {
-          color: #000;
+          /* color: #000; */
         }
       }
     }
     .post-title {
-      font-family: 'Amiri', serif;
-      font-size: 24px;
-      margin-bottom: 0;
-      line-height: 1.25em;
-      @media (min-width: 768px) {
-        font-size: 40px;
-      }
-      a {
-        color: black;
-        text-decoration: none;
-        &:hover {
-          text-decoration: underline;
-        }
-      }
+      margin-bottom: 20px;
+      text-align: center;
+      font-size: 32px;
+      line-height: 1.1em;
+      font-weight: 700;
+      color: #000000;
+      text-transform: uppercase;
     }
     .post-date {
       font-family: 'Overpass', sans-serif;
@@ -109,8 +103,8 @@ const PostWrap = styled.div`
       font-size: 14px;
       margin-bottom: 20px;
     }
-    .excerpt {
-      font-family: 'Amiri', serif;
+    .post-content {
+      /* font-family: 'Amiri', serif; */
       font-size: 17px;
       color: #222222;
       margin-bottom: 15px;
@@ -160,7 +154,7 @@ export const query = graphql`
           altText
           imageFile {
             childImageSharp {
-              fluid(traceSVG: { color: "#f00e2e" }) {
+              fluid(traceSVG: { color: "#FBF5ED" }) {
                 ...GatsbyImageSharpFluid_tracedSVG
               }
             }
@@ -207,6 +201,7 @@ const PostTemplate = ({
                   return (
                     <>
                       <div className="single-category">{category.name}</div>
+                      <div className="cat-sep">/</div>
                     </>
                   );
                 })}
@@ -214,12 +209,12 @@ const PostTemplate = ({
             )}
             <h1 className="post-title">{post.title}</h1>
             {post.featuredImage && (
-              <Link to={`/blog/${post.uri}`} className="post-img">
+              <div className="post-img">
                 <Img
                   alt={post.featuredImage.altText}
                   fluid={post.featuredImage.imageFile.childImageSharp.fluid}
                 />
-              </Link>
+              </div>
             )}
           </div>
 
@@ -228,17 +223,11 @@ const PostTemplate = ({
           </div> */}
 
           <div
-            className="excerpt"
+            className="post-content"
             dangerouslySetInnerHTML={{
               __html: post.content
             }}
           />
-          {/* <div
-            className="recipe"
-            dangerouslySetInnerHTML={{
-              __html: post.recipe
-            }}
-          /> */}
           {post.recipe.servingSize && (
             <pre>{JSON.stringify(post.recipe, null, 2)}</pre>
           )}
