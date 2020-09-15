@@ -5,21 +5,29 @@ import Img from 'gatsby-image';
 
 import Layout from '../components/layout/layout';
 import SEO from '../components/seo';
+import SoupSpoonSvg from '../images/soup-spoon';
+import ApronSvg from '../images/apron';
+import PotSvg from '../images/pot';
 
 const PostWrap = styled.div`
   max-width: 750px;
   .single-post {
-    padding: 25px;
     display: flex;
     flex-direction: column;
     background-color: #fffbf8;
     width: 100%;
     /* border-radius: 15px; */
     margin-bottom: 60px;
-    padding: 20px 20px 100px;
     width: 100%;
     @media (min-width: 768px) {
-      padding: 35px 70px 130px;
+    }
+    .post-intro {
+      border-bottom: 3px solid #e3c6bc;
+      background-color: #fffbf8;
+      padding: 40px 20px;
+      @media (min-width: 768px) {
+        padding: 40px;
+      }
     }
     .post-img {
       .gatsby-image-wrapper {
@@ -105,7 +113,8 @@ const PostWrap = styled.div`
     }
     .post-content {
       /* font-family: 'Amiri', serif; */
-      font-size: 17px;
+      font-size: 16px;
+
       color: #222222;
       margin-bottom: 15px;
       * {
@@ -129,6 +138,17 @@ const PostWrap = styled.div`
         height: 20px;
         width: auto;
       }
+    }
+    .post-recipe {
+      background-color: #fff;
+      padding: 40px 20px;
+      @media (min-width: 768px) {
+        padding: 40px;
+      }
+    }
+    .recipe-heading {
+      font-size: 26px;
+      font-weight: 600;
     }
   }
 `;
@@ -172,6 +192,7 @@ export const query = graphql`
             fieldGroupName
             prepItem
           }
+          notes
 
           fieldGroupName
         }
@@ -216,20 +237,65 @@ const PostTemplate = ({
                 />
               </div>
             )}
+            <div
+              className="post-content"
+              dangerouslySetInnerHTML={{
+                __html: post.content
+              }}
+            />
           </div>
 
           {/* <div className="post-date">
             {new Date(post.date).toUTCString().slice(0, 16)}
           </div> */}
 
-          <div
-            className="post-content"
-            dangerouslySetInnerHTML={{
-              __html: post.content
-            }}
-          />
           {post.recipe.servingSize && (
-            <pre>{JSON.stringify(post.recipe, null, 2)}</pre>
+            <div className="post-recipe">
+              <div className="recipe-heading">Recipe:</div>
+              <div className="recipe-about">
+                <div className="serving-size">
+                  <SoupSpoonSvg />
+                  {post.recipe.servingSize}
+                </div>
+                <div className="prep-time">
+                  <ApronSvg />
+                  {post.recipe.prepTime}
+                </div>
+                <div className="cook-time">
+                  <PotSvg />
+                  {post.recipe.cookTime}
+                </div>
+              </div>
+              {post.recipe.ingredients.length > 0 && (
+                <div className="recipe-ingredients">
+                  <div className="ingredients-heading">Ingredients:</div>
+                  <ul>
+                    {post.recipe.ingredients.map(ingredient => {
+                      return <li>{ingredient.ingredient}</li>;
+                    })}
+                  </ul>
+                </div>
+              )}
+              {post.recipe.preparation.length > 0 && (
+                <div className="recipe-preparation">
+                  <div className="preparation-heading">preparation:</div>
+                  <ol>
+                    {post.recipe.preparation.map(item => {
+                      return <li>{item.prepItem}</li>;
+                    })}
+                  </ol>
+                </div>
+              )}
+              {post.recipe.notes && (
+                <div
+                  className="recipe-notes"
+                  dangerouslySetInnerHTML={{
+                    __html: post.recipe.notes
+                  }}
+                ></div>
+              )}
+              {/* <pre>{JSON.stringify(post.recipe, null, 2)}</pre> */}
+            </div>
           )}
         </div>
         <button onClick={goBack} className="button" to="/">
