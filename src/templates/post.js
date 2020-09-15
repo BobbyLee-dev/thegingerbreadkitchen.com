@@ -266,7 +266,7 @@ const PostTemplate = ({
                   {post.recipe.cookTime}
                 </div>
               </div>
-              {post.recipe.ingredients.length > 0 && (
+              {post.recipe.ingredients > 0 && (
                 <div className="recipe-ingredients">
                   <div className="ingredients-heading">Ingredients:</div>
                   <ul>
@@ -276,7 +276,7 @@ const PostTemplate = ({
                   </ul>
                 </div>
               )}
-              {post.recipe.preparation.length > 0 && (
+              {post.recipe.preparation > 0 && (
                 <div className="recipe-preparation">
                   <div className="preparation-heading">preparation:</div>
                   <ol>
