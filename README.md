@@ -3,7 +3,7 @@
   <a href="https://thegingerbreadkitchen.com/">thegingerbreadkitchen.com</a>
 </h1>
 
-## 🚀 Personal Blog and Portfolio for Bobby Lee.
+## 🚀 Personal Blog and Portfolio for Sofya Lee.
 
 <p align="center">
     <div>Built with the Gatsby Default starter</div>
