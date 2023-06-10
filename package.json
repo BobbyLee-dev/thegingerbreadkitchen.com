@@ -6,7 +6,7 @@
   "author": "Bobby Lee <rdlee8181@gmail.com>",
   "dependencies": {
     "babel-plugin-styled-components": "1.10.6",
-    "gatsby": "^2.17.6",
+    "gatsby": "^4.25.7",
     "gatsby-image": "2.2.36",
     "gatsby-plugin-manifest": "2.4.10",
     "gatsby-plugin-offline": "^3.0.17",
